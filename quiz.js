@@ -6,7 +6,7 @@ let currentQuestionIndex = 0;
 let userAnswers = {};
 let flaggedQuestions = new Set();
 let timerInterval;
-const EXAM_DURATION = 1 * 60; // 3 hours in seconds
+const EXAM_DURATION = 180 * 60; // 3 hours in seconds
 const TOTAL_QUESTIONS = 100;
 const STORAGE_KEY = 'theory_exam_start_time';
 const STATE_KEY = 'theory_exam_state';
