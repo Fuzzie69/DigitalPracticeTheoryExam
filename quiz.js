@@ -35,6 +35,15 @@ function shuffleArray(array, seed = null) {
     }
 }
 
+// Helper to shuffle an array in-place with a seed
+function shuffleArrayInPlace(array, seed) {
+    let random = () => seededRandom(seed++);
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 // Cookie helpers
 function setCookie(name, value, hours) {
     const expires = new Date(Date.now() + hours * 60 * 60 * 1000).toUTCString();
@@ -121,6 +130,15 @@ async function loadQuestions() {
                 const rebuilt = plan.selectedIds.map(id => byId.get(id)).filter(Boolean);
                 if (rebuilt.length === TOTAL_QUESTIONS) {
                     questions = rebuilt;
+                    // --- Apply optionsShuffles if present ---
+                    if (plan.optionsShuffles && Array.isArray(plan.optionsShuffles)) {
+                        questions.forEach((q, idx) => {
+                            if (plan.optionsShuffles[idx]) {
+                                const origOptions = [...q.options];
+                                q.options = plan.optionsShuffles[idx].map(i => origOptions[i]);
+                            }
+                        });
+                    }
                     return;
                 }
                 // IDs missing? fall through to indices/seed
@@ -134,6 +152,15 @@ async function loadQuestions() {
                 plan.selectedIndices.every(i => Number.isInteger(i) && i >= 0 && i < allQuestions.length)
             ) {
                 questions = plan.selectedIndices.map(i => allQuestions[i]);
+                // --- Apply optionsShuffles if present ---
+                if (plan.optionsShuffles && Array.isArray(plan.optionsShuffles)) {
+                    questions.forEach((q, idx) => {
+                        if (plan.optionsShuffles[idx]) {
+                            const origOptions = [...q.options];
+                            q.options = plan.optionsShuffles[idx].map(i => origOptions[i]);
+                        }
+                    });
+                }
                 return;
             }
 
@@ -142,6 +169,15 @@ async function loadQuestions() {
                 const allIdx = Array.from({ length: allQuestions.length }, (_, i) => i);
                 shuffleArray(allIdx, plan.seed);
                 questions = allIdx.slice(0, TOTAL_QUESTIONS).map(i => allQuestions[i]);
+                // Restore options shuffles if present
+                if (plan.optionsShuffles && Array.isArray(plan.optionsShuffles)) {
+                    questions.forEach((q, idx) => {
+                        if (plan.optionsShuffles[idx]) {
+                            const origOptions = [...q.options];
+                            q.options = plan.optionsShuffles[idx].map(i => origOptions[i]);
+                        }
+                    });
+                }
                 // Save canonical indices for stability on future reloads this sitting
                 saveQuestionPlan({
                     seed: plan.seed,
@@ -149,7 +185,8 @@ async function loadQuestions() {
                     selectedIds: questions.every(q => q && (typeof q.id === 'string' || typeof q.id === 'number'))
                         ? questions.map(q => q.id)
                         : null,
-                    poolLen: allQuestions.length
+                    poolLen: allQuestions.length,
+                    optionsShuffles: plan.optionsShuffles || null
                 });
                 return;
             }
@@ -219,6 +256,21 @@ export function startExam() {
             // Build the questions array in that order
             questions = selectedIndices.map(i => allQuestions[i]);
 
+            // Shuffle options for each question, and record the shuffle order
+            const optionsShuffles = [];
+            questions.forEach((q, idx) => {
+                // Save original options order
+                const origOptions = [...q.options];
+                // Create an array of indices to shuffle
+                const optionIndices = origOptions.map((_, i) => i);
+                // Use a deterministic seed per question for reproducibility
+                shuffleArrayInPlace(optionIndices, seed + idx * 1000);
+                // Apply the shuffle to the options
+                q.options = optionIndices.map(i => origOptions[i]);
+                // Store the shuffle order for this question
+                optionsShuffles[idx] = optionIndices;
+            });
+
             // If questions have stable IDs, store them too (more robust if the server reorders the JSON)
             const selectedIds = questions.every(q => q && (typeof q.id === 'string' || typeof q.id === 'number'))
                 ? questions.map(q => q.id)
@@ -229,7 +281,8 @@ export function startExam() {
                 seed,
                 selectedIndices,
                 selectedIds,            // may be null if your data has no IDs
-                poolLen: allQuestions.length
+                poolLen: allQuestions.length,
+                optionsShuffles
             });
 
             // Reset runtime state

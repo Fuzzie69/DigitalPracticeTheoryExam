@@ -187,7 +187,7 @@
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q14"
   },
   {
-    "question": "A 10 kW motor has efficiency 81.5%. What is its INPUT power?",
+    "question": "A 10 kW, 3-phase motor has efficiency 81.5%. What is its INPUT power?",
     "options": [
       "12.27 kW",
       "10.00 kW",
@@ -198,7 +198,7 @@
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q15"
   },
   {
-    "question": "A 13 kW motor at 400 V line, pf≈0.819, what is the LINE current at full load?",
+    "question": "A 13 kW, 3-phase motor at 400 V line, pf≈0.819, what is the LINE current at full load?",
     "options": [
       "≈22.91 A",
       "≈10.87 A",
@@ -275,25 +275,25 @@
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q21(b)"
   },
   {
-    "question": "Why is an earth‑fault loop impedance test carried out AT the socket outlet?",
+    "question": "Why would an earth‑fault loop impedance test carried out AT a socket outlet?",
     "options": [
-      "To verify the final subcircuit fault loop impedance is low enough (so the 20 A HRC fuse operates within 0.4 s)",
-      "To find the phase rotation",
-      "To measure supply frequency",
+      "To verify the final subcircuit fuse will operate within 0.4 s",
+      "To verify that the fuse operates on leakage current only",
+      "To ensure supply fuse is in good condition",
       "To check RCD trip‑time only"
     ],
-    "answer": "To verify the final subcircuit fault loop impedance is low enough (so the 20 A HRC fuse operates within 0.4 s)",
+    "answer": "To verify the final subcircuit fuse operate within 0.4 s",
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q22(a)"
   },
   {
     "question": "Why is an earth‑fault loop impedance test ALSO carried out at the switchboard?",
     "options": [
-      "To ensure the HRC fuse breaking capacity is adequate for the PSSC",
-      "To verify neutral‑earth voltage only",
-      "Because the RCD requires it",
+      "To ensure a fuses breaking capacity is adequate for the PSSC",
+      "To verify neutral‑earth fault voltage only",
+      "Because the RCD requires it for operation characteristics",
       "To set the MEN link position"
     ],
-    "answer": "To ensure the HRC fuse breaking capacity is adequate for the PSSC",
+    "answer": "To ensure a fuses breaking capacity is adequate for the PSSC",
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q22(b)"
   },
   {
@@ -715,7 +715,7 @@
     "reference": "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q3(a)"
   },
   {
-    "question": "For the oven above, what is the total current at 230 V?",
+    "question": "A 230 V bakery oven has elements 12 kW, 8 kW, and 4 kW. (8 kW and 4 kW in parallel, in series with 12 kW) what is the total current at 230 V?",
     "options": [
       "≈26.1 A",
       "≈13.0 A",
@@ -726,7 +726,7 @@
     "reference": "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q3(b)"
   },
   {
-    "question": "For the oven above, what is the total power dissipated?",
+    "question": "A 230 V bakery oven has elements 12 kW, 8 kW, and 4 kW. (8 kW and 4 kW in parallel, in series with 12 kW) what is the total power dissipated?",
     "options": [
       "≈6.00 kW",
       "≈12.0 kW",
@@ -1092,9 +1092,9 @@
     "question": "Why is the earth conductor resistance in a Class I appliance’s flexible cord limited to ≤1 Ω?",
     "options": [
       "To ensure sufficient fault current flows to operate the protective device / limit touch voltage",
-      "To reduce energy consumption",
-      "To increase power factor",
-      "To limit neutral current"
+      "To reduce energy consumption and effective operation",
+      "To increase power factor reducing the amount of supply current",
+      "To limit neutral current to balance the load correctly"
     ],
     "answer": "To ensure sufficient fault current flows to operate the protective device / limit touch voltage",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q1(d)"
@@ -1103,9 +1103,9 @@
     "question": "Why is an earth‑fault loop impedance test carried out at the socket outlet furthest from the main switchboard?",
     "options": [
       "To confirm that the final subcircuit’s protection will operate within the required time",
-      "To measure tariff voltage",
-      "To record phase rotation",
-      "To set the transformer tap"
+      "To measure voltage regulation for the installation from the transformer",
+      "To record phase rotation for the three phase socket, to ensure motors turn in the correct rotation",
+      "To set the transformer tap voltage percent"
     ],
     "answer": "To confirm that the final subcircuit’s protection will operate within the required time",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q1(e)"
@@ -1114,9 +1114,9 @@
     "question": "Why does a PEC resistance < 1 Ω help prevent electric shock hazards under fault?",
     "options": [
       "It allows sufficient fault current to operate the protective device rapidly and prevents dangerous touch voltages",
-      "It limits the supply voltage to 110 V",
-      "It ensures the RCD will not trip",
-      "It reduces circuit power factor"
+      "It limits the supply voltage to 110 V where it may be hazardous to use 230 V",
+      "It ensures the RCD will not trip under normal operation",
+      "It reduces circuit power factor improving the diversity factor for the installation"
     ],
     "answer": "It allows sufficient fault current to operate the protective device rapidly and prevents dangerous touch voltages",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q1(f)"
@@ -1136,9 +1136,9 @@
     "question": "In HRC fuses, what is the CUT‑OFF characteristic?",
     "options": [
       "The value of fault current at which the fuse cuts off, less than the prospective short‑circuit current",
-      "The time to interrupt and extinguish the arc",
-      "The maximum continuous current",
-      "The voltage rating"
+      "The time to interrupt and extinguish the arc at the prospective short‑circuit current",
+      "The maximum continuous current that the device can safely carry",
+      "The voltage rating under full current rating"
     ],
     "answer": "The value of fault current at which the fuse cuts off, less than the prospective short‑circuit current",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q1(h)"
@@ -1158,9 +1158,9 @@
     "question": "Why are HRC fuses installed at the origin of a motor final subcircuit with star/delta starter?",
     "options": [
       "To provide short‑circuit protection to both the final subcircuit and the motor",
-      "To correct power factor",
-      "To control speed",
-      "To provide overload only"
+      "To correct power factor from the bad pf of the motor",
+      "To control speed and place some resistance in series with the motor windings",
+      "To provide overload protection if the motor becomes stalled"
     ],
     "answer": "To provide short‑circuit protection to both the final subcircuit and the motor",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q1(i)"
@@ -1168,12 +1168,12 @@
   {
     "question": "What hazard can occur when disposing of sodium‑vapour lamps?",
     "options": [
-      "Fire risk and/or chemical burns due to sodium reacting with moisture (forming hydrogen/NaOH)",
+      "Fire risk and/or chemical burns due to sodium reacting with moisture",
       "Explosive overpressure of quartz",
       "Exposure to x‑rays",
-      "None—completely safe"
+      "None — completely safe"
     ],
-    "answer": "Fire risk and/or chemical burns due to sodium reacting with moisture (forming hydrogen/NaOH)",
+    "answer": "Fire risk and/or chemical burns due to sodium reacting with moisture",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q1(j)"
   },
   {
@@ -1235,9 +1235,9 @@
     "question": "Which action is part of safe isolation of a fixed‑wired hot‑water cylinder?",
     "options": [
       "Open the isolator/remove fuses, PROVE‑TEST‑PROVE, lock open, and attach a danger tag",
-      "Switch off only the thermostat",
-      "Remove the MEN link",
-      "Open the RCD only"
+      "Open the isolator/remove fuses, TEST-PROVE-TEST, don't lock open, and attach a danger tag",
+      "Open the isolator/remove fuses, PROVE‑TEST‑PROVE, lock closed, and attach a danger tag",
+      "Close the isolator/fuses, PROVE‑TEST‑PROVE, lock closed, and attach a danger tag"
     ],
     "answer": "Open the isolator/remove fuses, PROVE‑TEST‑PROVE, lock open, and attach a danger tag",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q3(a)"
@@ -1259,7 +1259,7 @@
       "Re‑establish isolation using the PROVE‑TEST‑PROVE method",
       "Assume isolation because the control circuit is off",
       "Remove switchboard covers",
-      "Bypass the contactor"
+      "Touch the red and black wires together and the MCB will trip if someone has turned it back on"
     ],
     "answer": "Re‑establish isolation using the PROVE‑TEST‑PROVE method",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q3(c)"
@@ -1267,12 +1267,12 @@
   {
     "question": "How do you test that a new hot‑water cylinder is effectively connected to the MEN earthing system?",
     "options": [
-      "Use an ohmmeter between the cylinder frame and an independent earth reference; verify continuity (≤1 Ω)",
+      "Use an ohmmeter between the cylinder frame and main earth bar, resistance appropriate for cable length",
       "Use a voltmeter between phase and frame; verify 230 V",
       "Use an RCD tester",
-      "Perform a phase rotation test"
+      "Use an ohmmeter between the cylinder frame and the neutral connection; verify continuity (≤1 Ω)"
     ],
-    "answer": "Use an ohmmeter between the cylinder frame and an independent earth reference; verify continuity (≤1 Ω)",
+    "answer": "Use an ohmmeter between the cylinder frame and main earth bar, resistance appropriate for cable length",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q3(d)"
   },
   {
@@ -1346,8 +1346,8 @@
     "options": [
       "Limit current through the Zener and drop the supply to the Zener voltage",
       "Increase the ripple amplitude",
-      "Measure current",
-      "Provide isolation"
+      "Measure current through the use of shunt resistors",
+      "limits the current of the diode bridge, reducing the power rating of the power supply"
     ],
     "answer": "Limit current through the Zener and drop the supply to the Zener voltage",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q4(b)"
@@ -1356,8 +1356,8 @@
     "question": "Why is rectified THREE‑PHASE a.c. easier to smooth than SINGLE‑PHASE?",
     "options": [
       "The ripple amplitude is lower and the ripple frequency is higher",
-      "Because transformers are larger",
-      "Because current is zero",
+      "Because transformers are larger making the diodes smaller",
+      "Because current is zero at switching times smoothing the DC",
       "Because it is always pure d.c."
     ],
     "answer": "The ripple amplitude is lower and the ripple frequency is higher",
@@ -1367,9 +1367,9 @@
     "question": "Name ONE type of component commonly used in output filters for rectifiers.",
     "options": [
       "Capacitor (or inductor/resistor)",
-      "Thyristor",
-      "Hall sensor",
-      "RCD"
+      "Thyristor (or triac)",
+      "Hall sensor (or opto‑isolator)",
+      "RCD (or RCBO)"
     ],
     "answer": "Capacitor (or inductor/resistor)",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q4(d)"
@@ -1408,7 +1408,7 @@
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q5(c)"
   },
   {
-    "question": "At 400 V, what is the line current drawn by 40 kW at pf ≈ 0.75?",
+    "question": "At 400 V, what is the line current drawn by a 40 kW motor at pf ≈ 0.75?",
     "options": [
       "≈62.43 A",
       "≈76.98 A",
@@ -1421,12 +1421,12 @@
   {
     "question": "If an MCB’s rupturing capacity is under‑rated for the installation fault level, what could happen during a short‑circuit fault?",
     "options": [
-      "The MCB may be destroyed or may not clear the fault before damage occurs (and could cause upstream operation or fire)",
+      "The MCB may be destroyed or may not clear the fault before damage occurs",
       "The RCD will always trip first",
       "Nothing—the MCB simply won’t close",
       "Voltage increases to 400 V"
     ],
-    "answer": "The MCB may be destroyed or may not clear the fault before damage occurs (and could cause upstream operation or fire)",
+    "answer": "The MCB may be destroyed or may not clear the fault before damage occurs",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q6(a)"
   },
   {
@@ -1455,8 +1455,8 @@
     "question": "On an HRC fuse marked ‘63 A – 440 V – AC40’, what does AC40 mean?",
     "options": [
       "Maximum prospective short‑circuit current of 40 kA that the fuse can safely interrupt",
-      "Alternating current 40 V rating",
-      "A curve type",
+      "Alternating current category 40 rating",
+      "A curve type 40A rated",
       "Ambient category 40 °C"
     ],
     "answer": "Maximum prospective short‑circuit current of 40 kA that the fuse can safely interrupt",
@@ -1468,18 +1468,18 @@
       "Maximum continuous current rating",
       "Minimum trip current",
       "Fuse speed class",
-      "DC rating only"
+      "The total Amp rating for thermal overload trip only"
     ],
     "answer": "Maximum continuous current rating",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q6(c)"
   },
   {
-    "question": "On an HRC fuse marked ‘63 A – 440 V – AC40’, what does 440 V represent?",
+    "question": "On an HRC fuse marked ‘63 A – 440 V a.c. – AC40’, what does 440 V represent?",
     "options": [
       "Maximum a.c. open‑circuit voltage the fuse is designed to withstand",
       "Nominal system voltage",
-      "DC voltage only",
-      "Cut‑off voltage"
+      "Maximum DC voltage that the fuse can interrupt",
+      "Minimum Cut‑off voltage"
     ],
     "answer": "Maximum a.c. open‑circuit voltage the fuse is designed to withstand",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q6(c)"
@@ -1490,7 +1490,7 @@
       "Only the device protecting the faulty final subcircuit operates",
       "All upstream devices trip together",
       "No device trips",
-      "Only RCDs trip"
+      "To discriminate between wire colours"
     ],
     "answer": "Only the device protecting the faulty final subcircuit operates",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q6(d)"
@@ -1499,8 +1499,8 @@
     "question": "Why might an HRC fuse be installed upstream of MCBs in an existing single‑phase installation?",
     "options": [
       "Upstream HRC provides higher rupturing capacity where the PSSC exceeds the MCB rating",
-      "To correct power factor",
-      "To provide overload protection to MCBs",
+      "To correct power factor, the HRC fuse can inturrupt higher p.f. when transients occur",
+      "To provide underload protection to MCBs that a general use MCB cannot provide",
       "For metering isolation"
     ],
     "answer": "Upstream HRC provides higher rupturing capacity where the PSSC exceeds the MCB rating",
@@ -1544,8 +1544,8 @@
     "options": [
       "Type A",
       "Type AC",
-      "Type B only",
-      "Type F"
+      "Type G",
+      "Type X"
     ],
     "answer": "Type A",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q8(c)"
@@ -1554,8 +1554,8 @@
     "question": "Why are Type AC RCDs prohibited in NZ?",
     "options": [
       "They do not provide protection for residual pulsating d.c. components",
-      "They cannot detect a.c. faults",
-      "They require a neutral",
+      "They cannot detect a.c. faults from neutral to earth",
+      "They require a neutral short from phase to neutral",
       "They lack test buttons"
     ],
     "answer": "They do not provide protection for residual pulsating d.c. components",
@@ -1584,7 +1584,7 @@
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q8(e)"
   },
   {
-    "question": "A 10 kW, 60 Hz, 400 V, 4‑pole induction motor with η=81.5% and pf≈0.819: what is its power factor?",
+    "question": "A 10 kW, 3-phase, 50 Hz, 400 V, 4‑pole induction motor with η=81.5%: what is its power factor when the VA under full load is 14.91 kVA?",
     "options": [
       "≈0.819 lag",
       "Unity",
@@ -1595,7 +1595,7 @@
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q9(a)"
   },
   {
-    "question": "What is the INPUT power of that motor?",
+    "question": "A 10 kW, 3-phase, 50 Hz, 400 V, 4‑pole induction motor with η=81.5%: What is the INPUT power of that motor?",
     "options": [
       "≈12.27 kW",
       "≈10.00 kW",
@@ -1606,7 +1606,7 @@
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q9(b)"
   },
   {
-    "question": "What is the line current at full load?",
+    "question": "A 10 kW, 50 Hz, 400 V, 4‑pole induction motor with η=81.5% and pf≈0.819: What is the line current at full load?",
     "options": [
       "≈21.6 A",
       "≈10.8 A",
@@ -1630,12 +1630,12 @@
   {
     "question": "A 3‑phase 400 V inductive load of 19 kW operates at pf 0.875. What is the line current?",
     "options": [
-      "≈31.3 A",
-      "≈27.5 A",
-      "≈43.3 A",
-      "≈48.3 A"
+      "≈31.34 A",
+      "≈27.54 A",
+      "≈43.34 A",
+      "≈78.35 A"
     ],
-    "answer": "≈31.3 A",
+    "answer": "≈31.34 A",
     "reference": "ET 62 – 18 Nov 2017 (Questions); ET 62 – 18 Nov 2017 (Marking schedule), Q1(a)"
   },
   {
@@ -1653,8 +1653,8 @@
     "question": "In a.c. circuits, which option best defines IMPEDANCE?",
     "options": [
       "Total opposition in ohms to current flow (combination of R, XL, and XC)",
-      "Opposition due only to resistance",
-      "Opposition due only to capacitance",
+      "Total opposition in farad to current flow (combination of R, XI, and XC)",
+      "Total opposition in henry to current flow (combination of R, XL, and XO)",
       "Opposition due only to inductance"
     ],
     "answer": "Total opposition in ohms to current flow (combination of R, XL, and XC)",
@@ -1708,7 +1708,7 @@
     "question": "In which motor type is direction changed by reversing the FIELD winding connections?",
     "options": [
       "Universal (series) motor",
-      "Capacitor‑run motor",
+      "V8 petrol motor",
       "Shaded‑pole motor",
       "Three‑phase induction motor"
     ],
@@ -1719,8 +1719,8 @@
     "question": "Why must the secondary of a CT metering circuit be SHORT‑CIRCUITED before disconnecting meters?",
     "options": [
       "To prevent dangerous high voltage and to protect the CT winding insulation",
-      "To reduce measurement error",
-      "To maintain power factor",
+      "To reduce measurement error and allow low voltages to be discharged safely",
+      "To maintain power factor correction in the installation",
       "To reset the meter"
     ],
     "answer": "To prevent dangerous high voltage and to protect the CT winding insulation",
@@ -1731,7 +1731,7 @@
     "options": [
       "To prevent the star and delta contactors from closing simultaneously",
       "To limit inrush current only",
-      "To raise starting torque",
+      "To raise starting torque for specified loads",
       "To change frequency"
     ],
     "answer": "To prevent the star and delta contactors from closing simultaneously",
@@ -1754,7 +1754,7 @@
       "Increased current through winding impedance produces voltage drop across windings",
       "Because the core changes polarity",
       "Because frequency increases",
-      "Because pf rises"
+      "Because primary current decreases as the load increases, creating a magnetic pairing effect."
     ],
     "answer": "Increased current through winding impedance produces voltage drop across windings",
     "reference": "ET 62 – 18 Nov 2017 (Questions); ET 62 – 18 Nov 2017 (Marking schedule), Q1(j)"
@@ -1829,9 +1829,9 @@
     "question": "An earth‑continuity test on a 3 m, 2.5 mm² motor flexible cable shows 0.8 Ω. Why is this unacceptable?",
     "options": [
       "It is too high for the cable length (indicates a high‑resistance joint/poor connection)",
-      "It is too low; should be ≥1 MΩ",
-      "It indicates an overload",
-      "It shows the RCD tripped"
+      "It is too low; should be ≥1 MΩ (indicates a low‑resistance insulation fault)",
+      "It indicates an overloaded control circuit",
+      "It shows the RCD tripped while in the off position"
     ],
     "answer": "It is too high for the cable length (indicates a high‑resistance joint/poor connection)",
     "reference": "ET 62 – 18 Nov 2017 (Questions); ET 62 – 18 Nov 2017 (Marking schedule), Q3(b)"
@@ -1840,9 +1840,9 @@
     "question": "What is the correct insulation test and minimum acceptable result for the motor and cable assembly?",
     "options": [
       "Use 500 V d.c. insulation tester; ≥1 MΩ between each winding and to the frame",
-      "Use 250 V a.c.; ≤1 Ω",
-      "Use continuity tester; 0 Ω to earth",
-      "Use RCD tester; 30 mA trip"
+      "Use 250 V a.c. insulation tester; ≤1 Ω between each winding and to the frame",
+      "Use continuity tester; 0.1 Ω from winding to earth",
+      "Use RCD tester; 30 mA trip @ 300ms"
     ],
     "answer": "Use 500 V d.c. insulation tester; ≥1 MΩ between each winding and to the frame",
     "reference": "ET 62 – 18 Nov 2017 (Questions); ET 62 – 18 Nov 2017 (Marking schedule), Q3(c)"
@@ -1884,8 +1884,8 @@
     "question": "Can a 30 HP motor with load of 142.63 Nm at 1440 rpm, supply the required torque?",
     "options": [
       "Yes, because 22.38 kW (nameplate) exceeds kW required for 142.63 Nm",
-      "No, required power of 22.38 kW exceeds 30 HP",
-      "Yes, because pf=1.0",
+      "No, required power of 22.38 kW exceeds 30 HP (nameplate)",
+      "Yes, because 30 H.P. (nameplate) is less than requirement for 142.63 Nm",
       "No, because speed is too low"
     ],
     "answer": "Yes, because 22.38 kW (nameplate) exceeds kW required for 142.63 Nm",
