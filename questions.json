@@ -660,17 +660,6 @@
     "reference": "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q3(b)"
   },
   {
-    "question": "A 230 V bakery oven has elements 12 kW, 8 kW, and 4 kW. (8 kW and 4 kW in parallel, in series with 12 kW) what is the total power dissipated?",
-    "options": [
-      "≈6.00 kW",
-      "≈12.0 kW",
-      "≈4.00 kW",
-      "≈2.00 kW"
-    ],
-    "answer": "≈6.00 kW",
-    "reference": "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q3(c)"
-  },
-  {
     "question": "Why is the earth‑fault loop via the main NEUTRAL conductor more important than the loop through mass of earth in an MEN system?",
     "options": [
       "Because the neutral path has consistently low impedance",
@@ -1509,12 +1498,12 @@
   {
     "question": "A 10 kW, 3-phase, 50 Hz, 400 V, 4‑pole induction motor with η=81.5%: what is its power factor when the VA under full load is 14.91 kVA?",
     "options": [
-      "≈0.819 lag",
+      "≈0.822 lag",
       "Unity",
       "≈0.707 lag",
       "≈0.940 lead"
     ],
-    "answer": "≈0.819 lag",
+    "answer": "≈0.822 lag",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q9(a)"
   },
   {
@@ -2176,5 +2165,335 @@
     ],
     "answer": "7.81 A",
     "reference": "Neutral current = √(I₁² + I₂² + I₃² − I₁I₂ − I₂I₃ − I₃I₁). Substituting: √(784+576+361 − 672−456−532) = √61 ≈ 7.81 A."
+  },
+  {
+    "question": "A 400/230 V three-phase, four-wire installation has unbalanced single-phase loads to neutral: Red = 5.0 kW, White = 2.4 kW, Blue = 1.8 kW (assume pf = 1). What is the Red phase current?",
+    "options": [
+      "21.74 A",
+      "19.60 A",
+      "23.90 A",
+      "18.00 A"
+    ],
+    "answer": "21.74 A",
+    "reference": "Single-phase to neutral: I = P / V = (5.0 kW × 1000) / 230 ≈ 21.74 A."
+  },
+  {
+    "question": "In a 400/230 V installation (pf = 1), the single-phase loads to neutral are: Red = 2.0 kW, White = 3.3 kW, Blue = 1.5 kW. What is the White phase current?",
+    "options": [
+      "12.50 A",
+      "14.35 A",
+      "16.00 A",
+      "13.00 A"
+    ],
+    "answer": "14.35 A",
+    "reference": "I = P / V = (3.3 kW × 1000) / 230 ≈ 14.35 A."
+  },
+  {
+    "question": "For a 400/230 V MEN installation with single-phase loads to neutral (pf = 1): Red = 2.2 kW, White = 1.6 kW, Blue = 6.0 kW. What is the Blue phase current?",
+    "options": [
+      "24.00 A",
+      "26.09 A",
+      "22.50 A",
+      "28.00 A"
+    ],
+    "answer": "26.09 A",
+    "reference": "I = P / V = (6.0 kW × 1000) / 230 ≈ 26.09 A."
+  },
+  {
+    "question": "A three-phase, four-wire 400/230 V board supplies single-phase loads to neutral (pf = 1): Red = 1.2 kW, White = 2.0 kW, Blue = 2.5 kW. What is the Red phase current?",
+    "options": [
+      "5.22 A",
+      "6.50 A",
+      "4.80 A",
+      "7.20 A"
+    ],
+    "answer": "5.22 A",
+    "reference": "I = P / V = (1.2 kW × 1000) / 230 ≈ 5.22 A."
+  },
+  {
+    "question": "At a 400/230 V switchboard (pf = 1), single-phase loads to neutral are: Red = 1.0 kW, White = 7.5 kW, Blue = 3.0 kW. What is the White phase current?",
+    "options": [
+      "30.00 A",
+      "32.61 A",
+      "27.80 A",
+      "35.00 A"
+    ],
+    "answer": "32.61 A",
+    "reference": "I = P / V = (7.5 kW × 1000) / 230 ≈ 32.61 A."
+  },
+  {
+    "question": "A 400/230 V installation with single-phase loads to neutral (pf = 1) has: Red = 2.4 kW, White = 1.8 kW, Blue = 2.8 kW. What is the Blue phase current?",
+    "options": [
+      "11.50 A",
+      "12.17 A",
+      "13.00 A",
+      "10.80 A"
+    ],
+    "answer": "12.17 A",
+    "reference": "I = P / V = (2.8 kW × 1000) / 230 ≈ 12.17 A."
+  },
+  {
+    "question": "A 400/230 V, four-wire board supplies single-phase loads to neutral (pf = 1): Red = 0.75 kW, White = 2.2 kW, Blue = 4.0 kW. What is the Red phase current?",
+    "options": [
+      "3.26 A",
+      "3.80 A",
+      "4.10 A",
+      "2.95 A"
+    ],
+    "answer": "3.26 A",
+    "reference": "I = P / V = (0.75 kW × 1000) / 230 ≈ 3.26 A."
+  },
+  {
+    "question": "In a 400/230 V installation (pf = 1), the single-phase loads to neutral are: Red = 4.5 kW, White = 1.2 kW, Blue = 2.0 kW. What is the White phase current?",
+    "options": [
+      "5.22 A",
+      "6.00 A",
+      "5.00 A",
+      "6.52 A"
+    ],
+    "answer": "5.22 A",
+    "reference": "I = P / V = (1.2 kW × 1000) / 230 ≈ 5.22 A."
+  },
+  {
+    "question": "A 400/230 V installation (pf = 1) supplies single-phase loads to neutral: Red = 3.0 kW, White = 2.5 kW, Blue = 2.2 kW. What is the Blue phase current?",
+    "options": [
+      "9.57 A",
+      "10.00 A",
+      "8.90 A",
+      "11.00 A"
+    ],
+    "answer": "9.57 A",
+    "reference": "I = P / V = (2.2 kW × 1000) / 230 ≈ 9.57 A."
+  },
+  {
+    "question": "For a 400/230 V MEN installation (pf = 1), single-phase loads to neutral are: Red = 6.8 kW, White = 3.3 kW, Blue = 1.0 kW. What is the Red phase current?",
+    "options": [
+      "29.57 A",
+      "28.00 A",
+      "31.00 A",
+      "27.50 A"
+    ],
+    "answer": "29.57 A",
+    "reference": "I = P / V = (6.8 kW × 1000) / 230 ≈ 29.57 A."
+  },
+  {
+    "question": "A 3-phase Δ–Y transformer has primary line voltage 11 kV and turns ratio Np:Ns = 20:1. What is the SECONDARY LINE voltage?",
+    "options": [
+      "550 V",
+      "400 V",
+      "952.63 V",
+      "230.94 V"
+    ],
+    "answer": "952.63 V",
+    "reference": "For Δ–Y: secondary phase voltage = ((Vpri × Turns Secondary) / Turns primary). VLine = Vphase × √3, therefore (11000 × 1)/20 = 550, 550 × √3 ≈ 952.63 V"
+  },
+  {
+    "question": "A 3-phase Y–Y transformer has primary line voltage 11 kV and turns ratio Np:Ns = 20:1. What is the SECONDARY LINE voltage?",
+    "options": [
+      "400 V",
+      "317.54 V",
+      "550 V",
+      "953 V"
+    ],
+    "answer": "550 V",
+    "reference": "For Y–Y: Vp_ph = VLp/√3 = 11000/√3 = 6350.85 V, secondary phase voltage = ((Vpri × Turns Secondary) / Turns primary). VLine = Vphase × √3, so  = 6350.85 × 1 / 20 = 317.54 V, 317.54 × √3 ≈ 549.99 V."
+  },
+  {
+    "question": "A 3-phase Y–Δ transformer has primary line voltage 11 kV and turns ratio Np:Ns = 20:1. What is the SECONDARY LINE voltage?",
+    "options": [
+      "317.54 V",
+      "398.96 V",
+      "550 V",
+      "230.94 V"
+    ],
+    "answer": "317.54 V",
+    "reference": "For Y–Δ: primary phase voltage = VLp/√3 = 11000/√3 = 6350.85 V. Secondary phase voltage = Vp_ph × (Ns/Np) = 6350.85 × (1/20) = 317.54 V. For Δ secondary, VLINE = VPHASE, so VLs ≈ 317.54."
+  },
+  {
+    "question": "A 3-phase Δ–Δ transformer has primary line voltage 11 kV and turns ratio Np:Ns = 20:1. What is the SECONDARY LINE voltage?",
+    "options": [
+      "550 V",
+      "318 V",
+      "400 V",
+      "953 V"
+    ],
+    "answer": "550 V",
+    "reference": "For Δ–Δ: primary phase voltage = VLp = 11000 V. Secondary phase voltage = Vp_ph × (Ns/Np) = 11000 × (1/20) = 550 V. For Δ secondary, VLINE = VPHASE, so VLs = 550 V."
+  },
+  {
+    "question": "A 250 kVA 3-phase Δ–Y transformer delivers 400 V line on the secondary. What is the SECONDARY LINE current at full load?",
+    "options": [
+      "289.4 A",
+      "360.8 A",
+      "433.9 A",
+      "251.2 A"
+    ],
+    "answer": "360.8 A",
+    "reference": "Balanced 3-ϕ current: I_L = S/(√3 × V_L). So I_Ls = 250000/(√3 × 400) = 250000/(1.732 × 400) = 250000/692.82 ≈ 360.8 A."
+  },
+  {
+    "question": "A 250 kVA Δ–Y 3-phase transformer has primary line voltage 11 kV. What is the PRIMARY LINE current at full load?",
+    "options": [
+      "7.58 A",
+      "10.02 A",
+      "13.12 A",
+      "16.32 A"
+    ],
+    "answer": "13.12 A",
+    "reference": "Balanced 3-ϕ current: I_L = S/(√3 × V_L). So I_Lp = 250000/(√3 × 11000) = 250000/(1.732 × 11000) = 250000/19052 ≈ 13.12 A."
+  },
+  {
+    "question": "A 300 kVA 3-phase Y–Y transformer operates at 33 kV primary and 400 V secondary. What is the PRIMARY PHASE current at full load?",
+    "options": [
+      "5.25 A",
+      "9.09 A",
+      "15.2 A",
+      "2.89 A"
+    ],
+    "answer": "5.25 A",
+    "reference": "Balanced 3-ϕ current: I_LINE = S/(√3 × V_LINE). For Y primary, IPHASE = ILINE. So I_p_ph = 300000/(√3 × 33000) = 300000/(1.732 × 33000) = 300000/57156 ≈ 5.25 A."
+  },
+  {
+    "question": "A 500 kVA 3-phase Δ–Δ transformer supplies 415 V secondary. What is the SECONDARY PHASE (winding) current at full load?",
+    "options": [
+      "401.61 A",
+      "695.60 A",
+      "233.32 A",
+      "480.95 A"
+    ],
+    "answer": "401.61 A",
+    "reference": "First find secondary line current: I_Ls = S/(√3 × V_Ls) = 500000/(1.732 × 415) ≈ 695.6 A. For Δ secondary, IPHASE = ILINE/√3 = 695.6/1.732 ≈ 401.61 A."
+  },
+  {
+    "question": "A 150 kVA 3-phase Δ–Y transformer has primary line voltage 11 kV and turns ratio Np:Ns = 22:1. What is the SECONDARY PHASE voltage?",
+    "options": [
+      "500 V",
+      "288.7 V",
+      "866 V",
+      "415 V"
+    ],
+    "answer": "500 V",
+    "reference": "For Δ–Y: primary phase voltage = VLp = 11000 V. Secondary phase voltage = Vp_ph × (Ns/Np) = 11000 × (1/22) = 500 V.)"
+  },
+  {
+    "question": "A 200 kVA 3-phase Y–Δ transformer delivers 400 V on the secondary. What is the SECONDARY LINE current at full load?",
+    "options": [
+      "250.55 A",
+      "288.68 A",
+      "317.99 A",
+      "333.24 A"
+    ],
+    "answer": "288.68 A",
+    "reference": "Balanced 3-ϕ current: I_Ls = S/(√3 × V_Ls) = 200000/(1.732 × 400) = 200000/692.82 ≈ 288.68 A."
+  },
+  {
+    "question": "A 200 kVA 3-phase Y–Δ transformer has 11 kV primary. What is the PRIMARY LINE current at full load?",
+    "options": [
+      "7.58 A",
+      "10.5 A",
+      "13.1 A",
+      "18.2 A"
+    ],
+    "answer": "10.5 A",
+    "reference": "Balanced 3-ϕ current: I_Lp = S/(√3 × V_Lp) = 200000/(1.732 × 11000) = 200000/19052 ≈ 10.497 A."
+  },
+  {
+    "question": "A 100 kVA 3-phase Y–Y transformer has 11 kV primary and turns ratio Np:Ns = 20:1. What is the SECONDARY PHASE voltage?",
+    "options": [
+      "550.11 V",
+      "317.54 V",
+      "400.98 V",
+      "230.94 V"
+    ],
+    "answer": "317.54 V",
+    "reference": "For Y–Y: secondary line voltage = Vph primary = VL pri/√3 = 11000/√3 = 6350.85 V. For Y secondary, VPHASE = Vph-pri/20 = 6350.85/20 ≈ 317.54 V."
+  },
+  {
+    "question": "A 75 kVA 3-phase Δ–Δ transformer has 6.6 kV primary and 415 V secondary. What is the PRIMARY LINE current at full load?",
+    "options": [
+      "6.56 A",
+      "11.0 A",
+      "19.6 A",
+      "3.78 A"
+    ],
+    "answer": "6.56 A",
+    "reference": "Balanced 3-ϕ current: I_Lp = S/(√3 × V_Lp) = 75000/(1.732 × 6600) = 75000/11491.2 ≈ 6.56 A (≈ 6.56 A)."
+  },
+  {
+    "question": "A 400 kVA 3-phase Δ–Y transformer steps 33 kV to a secondary line voltage of 400 V. What is the approximate TURNS RATIO Np:Ns (per phase)?",
+    "options": [
+      "100:1",
+      "143:1",
+      "173:1",
+      "120:1"
+    ],
+    "answer": "143:1",
+    "reference": "Turns ratio = (VLp)/(VLs / √3) = (33000)/230.94 ≈ 142.89 ≈ 143:1."
+  },
+  {
+    "question": "A 160 kVA 3-phase Y–Δ transformer has 11 kV primary line voltage and turns ratio Np:Ns = 40:1. What is the SECONDARY LINE voltage?",
+    "options": [
+      "398.37 V",
+      "318.22 V",
+      "158.77 V",
+      "692.82 V"
+    ],
+    "answer": "158.77 V",
+    "reference": "For Y–Δ: primary phase voltage = VLp/√3 = 11000/1.732 = 6350.85 V. Secondary phase voltage = 6350.85 × (1/40) = 158.77 V. For Δ secondary, VLINE = VPHASE, so VLs ≈ 158.77."
+  },
+  {
+    "question": "A 500 kVA 3-phase Y–Y transformer has secondary line voltage 550 V. What is the SECONDARY LINE current at full load?",
+    "options": [
+      "524.86 A",
+      "433.05 A",
+      "695.67 A",
+      "289.08 A"
+    ],
+    "answer": "524.86 A",
+    "reference": "Balanced 3-ϕ current: I_Ls = S/(√3 × V_Ls) = 500000/(1.732 × 550) = 500000/952.6 ≈ 524.86 A."
+  },
+  {
+    "question": "A 1 MVA 3-phase Δ–Δ transformer delivers 3.3 kV secondary. What is the SECONDARY PHASE current at full load?",
+    "options": [
+      "58.08 A",
+      "100.01 A",
+      "101.01 A",
+      "174.95 A"
+    ],
+    "answer": "101.0 A",
+    "reference": "First find secondary line current: I_Ls = S/(√3 × V_Ls) = 1,000,000/(1.732 × 3300) ≈ 174.95 A. For Δ secondary, IPHASE = ILINE/√3 = 174.95/1.732 ≈ 101.0 A."
+  },
+  {
+    "question": "A 750 kVA 3-phase Δ–Y transformer supplies 400 V secondary line voltage. What is the SECONDARY LINE current at full load?",
+    "options": [
+      "866 A",
+      "1082.5 A",
+      "1250 A",
+      "1443 A"
+    ],
+    "answer": "1082.5 A",
+    "reference": "Balanced 3-ϕ current: I_Ls = S/(√3 × V_Ls) = 750000/(1.732 × 400) = 750000/692.82 ≈ 1082.5 A."
+  },
+  {
+    "question": "A 300 kVA 3-phase Y–Δ transformer operates at 6.6 kV primary and 400 V secondary. What is the PRIMARY PHASE current at full load?",
+    "options": [
+      "15.29 A",
+      "26.24 A",
+      "43.33 A",
+      "52.52 A"
+    ],
+    "answer": "26.24 A",
+    "reference": "Balanced 3-ϕ current: I_LINE = S/(√3 × V_LINE). For Y primary, IPHASE = ILINE. So I_p_ph = 300000/(1.732 × 6600) = 300000/11431.2 ≈ 26.24 A."
+  },
+  {
+    "question": "A 200 kVA 3-phase Y–Y transformer has 11 kV primary. What is the PRIMARY PHASE current at full load?",
+    "options": [
+      "7.58 A",
+      "10.5 A",
+      "13.1 A",
+      "18.2 A"
+    ],
+    "answer": "10.5 A",
+    "reference": "Balanced 3-ϕ current: I_LINE = S/(√3 × V_LINE). For Y primary, IPHASE = ILINE. So I_p_ph = 200000/(1.732 × 11000) = 200000/19052 ≈ 10.50 A."
   }
 ]
