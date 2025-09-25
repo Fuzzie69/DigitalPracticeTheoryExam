@@ -66,17 +66,6 @@
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q5"
   },
   {
-    "question": "When proving isolation on a 3‑phase 400 V oven, what is the hazard of testing only phase-to-phase and not testing each phase to earth?",
-    "options": [
-      "One phase could still be alive",
-      "The tester battery may drain faster",
-      "It can damage the isolator",
-      "It will trip the upstream RCD"
-    ],
-    "answer": "One phase could still be alive",
-    "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q6"
-  },
-  {
     "question": "Which of the following is an acceptable earth electrode type for an MEN system?",
     "options": [
       "Earth rod",
@@ -108,17 +97,6 @@
     ],
     "answer": "To verify operation within specified residual current and time limits",
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q9"
-  },
-  {
-    "question": "Why are HRC fuses installed at the origin of the final subcircuit feeding a 3‑phase induction motor with a star/delta starter?",
-    "options": [
-      "To provide short‑circuit fault protection to both the final subcircuit and the motor",
-      "To improve the motor’s efficiency",
-      "To provide overload protection only",
-      "To reduce voltage unbalance"
-    ],
-    "answer": "To provide short‑circuit fault protection to both the final subcircuit and the motor",
-    "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q10"
   },
   {
     "question": "Which definition best describes ISOLATION of three‑phase equipment?",
@@ -282,7 +260,7 @@
       "To ensure supply fuse is in good condition",
       "To check RCD trip‑time only"
     ],
-    "answer": "To verify the final subcircuit fuse operate within 0.4 s",
+    "answer": "To verify the final subcircuit fuse will operate within 0.4 s",
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q22(a)"
   },
   {
@@ -339,17 +317,6 @@
     ],
     "answer": "To ensure protection on the final subcircuit operates within the required time",
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q24(b)"
-  },
-  {
-    "question": "In an MEN system, why is the earth‑fault loop via the main neutral conductor more important than the loop through mass of earth?",
-    "options": [
-      "The supply neutral has much lower impedance than the general mass of earth",
-      "It provides a path that avoids the MEN link",
-      "It reduces touch voltage to 110 V",
-      "It avoids operation of protective devices"
-    ],
-    "answer": "The supply neutral has much lower impedance than the general mass of earth",
-    "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q25"
   },
   {
     "question": "A 400 V three‑phase kiln has elements of 17.77 Ω connected in DELTA. What is the line current IL?",
@@ -541,12 +508,12 @@
   {
     "question": "Why is a protective earthing conductor still necessary in a final subcircuit protected by an RCD?",
     "options": [
-      "Because an RCD requires an earth‑leakage path to operate",
+      "Because it provides a low-impedance fault path so protective devices operate quickly and touch voltages are limited",
       "Because it reduces energy consumption",
       "Because it improves phase balance",
       "Because it increases voltage"
     ],
-    "answer": "Because an RCD requires an earth‑leakage path to operate",
+    "answer": "Because it provides a low-impedance fault path so protective devices operate quickly and touch voltages are limited",
     "reference": "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q1(a)"
   },
   {
@@ -601,7 +568,7 @@
       "To eliminate inrush current",
       "To convert 1‑phase to 3‑phase"
     ],
-    "answer": "To prevent incorrect motor rotation (e.g., hoist moving opposite to the command)",
+    "answer": "To prevent incorrect motor rotation",
     "reference": "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q1(f)"
   },
   {
@@ -614,28 +581,6 @@
     ],
     "answer": "Power varies with the SQUARE of voltage; it will increase above 2 kW at 240 V",
     "reference": "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q1(g)"
-  },
-  {
-    "question": "How does a thermistor protect a 3‑phase induction motor during overload?",
-    "options": [
-      "Winding temperature rise opens the control circuit at a preset temperature",
-      "It directly trips the main breaker on current",
-      "It changes frequency to reduce torque",
-      "It shorts the rotor bars"
-    ],
-    "answer": "Winding temperature rise opens the control circuit at a preset temperature",
-    "reference": "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q1(h)"
-  },
-  {
-    "question": "In semiconductors, BJT stands for what?",
-    "options": [
-      "Bipolar Junction Transistor",
-      "Back‑biased Junction Thyristor",
-      "Bridge Junction Transducer",
-      "Binary Junction Transistor"
-    ],
-    "answer": "Bipolar Junction Transistor",
-    "reference": "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q1(i)"
   },
   {
     "question": "What is a transducer?",
@@ -702,17 +647,6 @@
     ],
     "answer": "The 20 A fuse’s pre‑arcing + arcing time must be less than the 63 A fuse’s pre‑arcing time",
     "reference": "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q2(c)"
-  },
-  {
-    "question": "A 230 V bakery oven has elements 12 kW, 8 kW, and 4 kW. What is the TOTAL resistance of the oven elements when all are on (8 kW and 4 kW in parallel, in series with 12 kW)?",
-    "options": [
-      "≈8.82 Ω",
-      "≈4.41 Ω",
-      "≈6.61 Ω",
-      "≈13.22 Ω"
-    ],
-    "answer": "≈8.82 Ω",
-    "reference": "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q3(a)"
   },
   {
     "question": "A 230 V bakery oven has elements 12 kW, 8 kW, and 4 kW. (8 kW and 4 kW in parallel, in series with 12 kW) what is the total current at 230 V?",
@@ -1087,17 +1021,6 @@
     ],
     "answer": "≈26.0 A",
     "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q1(c)"
-  },
-  {
-    "question": "Why is the earth conductor resistance in a Class I appliance’s flexible cord limited to ≤1 Ω?",
-    "options": [
-      "To ensure sufficient fault current flows to operate the protective device / limit touch voltage",
-      "To reduce energy consumption and effective operation",
-      "To increase power factor reducing the amount of supply current",
-      "To limit neutral current to balance the load correctly"
-    ],
-    "answer": "To ensure sufficient fault current flows to operate the protective device / limit touch voltage",
-    "reference": "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q1(d)"
   },
   {
     "question": "Why is an earth‑fault loop impedance test carried out at the socket outlet furthest from the main switchboard?",
@@ -2110,5 +2033,148 @@
     ],
     "answer": "No, because 58 A is below the fusing current",
     "reference": "ET 62 – 18 Nov 2017 (Questions); ET 62 – 18 Nov 2017 (Marking schedule), Q9(b)"
+  },
+  {
+    "question": "In a perfectly balanced three-phase, four-wire system with linear loads, what will the neutral current be?",
+    "options": [
+      "Equal to the phase current",
+      "Zero",
+      "Twice the phase current",
+      "Equal to the line current"
+    ],
+    "answer": "Zero",
+    "reference": "Neutral current = phasor sum of all three phase currents. In balanced load, sum = 0."
+  },
+  {
+    "question": "In a three-phase, four-wire system, if phase currents are 20 A, 18 A, and 22 A, what is the approximate neutral current?",
+    "options": [
+      "3.59 A",
+      "3.46 A",
+      "2.11 A",
+      "6.05 A"
+    ],
+    "answer": "3.46 A",
+    "reference": "Neutral current = √(I₁² + I₂² + I₃² − I₁I₂ − I₂I₃ − I₃I₁). Substituting: √(400+324+484−360−396−440) = √12 ≈ 3.46 A."
+  },
+  {
+    "question": "What causes neutral current to increase significantly in modern installations?",
+    "options": [
+      "Unbalanced linear loads only",
+      "Harmonic currents from nonlinear loads",
+      "Short-circuit faults",
+      "Higher supply frequency"
+    ],
+    "answer": "Harmonic currents from nonlinear loads",
+    "reference": "Triplen harmonics (3rd, 9th, 15th...) add arithmetically in the neutral, increasing current."
+  },
+  {
+    "question": "If three identical single-phase loads of 10 A each are connected to each phase of a three-phase, four-wire system, what is the neutral current?",
+    "options": [
+      "0 A",
+      "10 A",
+      "17.3 A",
+      "30 A"
+    ],
+    "answer": "0 A",
+    "reference": "With identical balanced loads, I₁ + I₂ + I₃ = 0 in vector sum, so neutral = 0 A."
+  },
+  {
+    "question": "If a building has three-phase circuits supplying many computers, what is the likely issue with neutral current?",
+    "options": [
+      "Neutral current is reduced due to load sharing",
+      "Neutral current can exceed phase current due to triplen harmonics",
+      "Neutral current always equals line current",
+      "Neutral conductor is not required"
+    ],
+    "answer": "Neutral current can exceed phase current due to harmonics",
+    "reference": "Triplen harmonics add in the neutral without cancellation, sometimes exceeding any single phase current."
+  },
+  {
+    "question": "For a three-phase system with phase currents of 30 A, 25 A, and 20 A, what is the approximate neutral current?",
+    "options": [
+      "7.66 A",
+      "8.66 A",
+      "9.66 A",
+      "8.25 A"
+    ],
+    "answer": "8.66 A",
+    "reference": "Neutral current = √(I₁² + I₂² + I₃² − I₁I₂ − I₂I₃ − I₃I₁). Substituting: √(900+625+400−750−500−600) = √75 ≈ 8.66 A."
+  },
+  {
+    "question": "What instrument is commonly used to directly measure neutral current in a distribution board?",
+    "options": [
+      "Insulation resistance tester",
+      "Earth loop impedance tester",
+      "Clamp meter",
+      "Megohmmeter"
+    ],
+    "answer": "Clamp meter",
+    "reference": "Neutral current can be measured by clamping the neutral conductor with a clip on ammeter."
+  },
+  {
+    "question": "In a balanced three-phase system with purely resistive loads, the phasor sum of phase currents is:",
+    "options": [
+      "Equal to the neutral current",
+      "Zero",
+      "Twice the line current",
+      "Equal to the phase current"
+    ],
+    "answer": "Zero",
+    "reference": "Phasor sum of three equal 120° phase currents is zero → neutral = 0 A."
+  },
+  {
+    "question": "What is a safe design practice for neutral conductors in systems with many nonlinear loads?",
+    "options": [
+      "Reduce neutral size below phase size",
+      "Double-size the neutral to handle harmonics",
+      "Eliminate the neutral",
+      "Use a bare earth as neutral"
+    ],
+    "answer": "Double-size the neutral to handle harmonics",
+    "reference": "Since triplen harmonics can cause neutral > phase current, oversizing (e.g., 2× phase) is recommended."
+  },
+  {
+    "question": "In a three-phase, four-wire system, if phase currents are 15 A, 10 A, and 8 A, what is the approximate neutral current?",
+    "options": [
+      "6.24 A",
+      "5.92 A",
+      "7.00 A",
+      "4.95 A"
+    ],
+    "answer": "6.24 A",
+    "reference": "Neutral current = √(I₁² + I₂² + I₃² − I₁I₂ − I₂I₃ − I₃I₁). Substituting: √(225+100+64 − 150−80−120) = √39 ≈ 6.24 A."
+  },
+  {
+    "question": "In a three-phase, four-wire system, if phase currents are 40 A, 40 A, and 30 A, what is the neutral current?",
+    "options": [
+      "10.00 A",
+      "0.00 A",
+      "17.32 A",
+      "6.32 A"
+    ],
+    "answer": "10.00 A",
+    "reference": "Neutral current = √(I₁² + I₂² + I₃² − I₁I₂ − I₂I₃ − I₃I₁). Substituting: √(1600+1600+900 − 1600−1200−1200) = √100 = 10.00 A."
+  },
+  {
+    "question": "In a three-phase, four-wire system, if phase currents are 12 A, 9 A, and 5 A, what is the approximate neutral current?",
+    "options": [
+      "6.08 A",
+      "5.44 A",
+      "6.50 A",
+      "7.21 A"
+    ],
+    "answer": "6.08 A",
+    "reference": "Neutral current = √(I₁² + I₂² + I₃² − I₁I₂ − I₂I₃ − I₃I₁). Substituting: √(144+81+25 − 108−45−60) = √37 ≈ 6.08 A."
+  },
+  {
+    "question": "In a three-phase, four-wire system, if phase currents are 28 A, 24 A, and 19 A, what is the approximate neutral current?",
+    "options": [
+      "7.81 A",
+      "8.06 A",
+      "6.95 A",
+      "7.50 A"
+    ],
+    "answer": "7.81 A",
+    "reference": "Neutral current = √(I₁² + I₂² + I₃² − I₁I₂ − I₂I₃ − I₃I₁). Substituting: √(784+576+361 − 672−456−532) = √61 ≈ 7.81 A."
   }
 ]
