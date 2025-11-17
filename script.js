@@ -88,6 +88,16 @@ function updateVisitCounter() {
     const capiBase = getMeta('counterapi-base');
     const capiKey = getMeta('counterapi-key');
     if (capiBase) {
+      // Guard against accidental double-fires within a short window for this tab
+      try {
+        const guardKey = `visits:guard:${capiBase}`;
+        const last = Number(sessionStorage.getItem(guardKey) || '0');
+        const now = Date.now();
+        if (now - last < 3000) {
+          return; // skip duplicate within 3s
+        }
+        sessionStorage.setItem(guardKey, String(now));
+      } catch {}
       const opts = capiKey ? { headers: { Authorization: `Bearer ${capiKey}` } } : {};
       fetch(`${capiBase}/up`, opts)
         .then(r => r.json())
