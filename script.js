@@ -88,6 +88,21 @@ function updateVisitCounter() {
     const capiBase = getMeta('counterapi-base');
     const capiKey = getMeta('counterapi-key');
     if (capiBase) {
+      // If page is not visible (prerender/prefetch), wait until visible to avoid double fires
+      try {
+        if (document.visibilityState && document.visibilityState !== 'visible') {
+          if (!window.__visitVisibilityHooked) {
+            window.__visitVisibilityHooked = true;
+            document.addEventListener('visibilitychange', () => {
+              if (document.visibilityState === 'visible') updateVisitCounter();
+            }, { once: true });
+          }
+          return;
+        }
+      } catch {}
+      // In-process guard for this page context
+      if (window.__capiVisitFired) return;
+      window.__capiVisitFired = true;
       // Guard against accidental double-fires within a short window for this tab
       try {
         const guardKey = `visits:guard:${capiBase}`;
@@ -97,6 +112,16 @@ function updateVisitCounter() {
           return; // skip duplicate within 3s
         }
         sessionStorage.setItem(guardKey, String(now));
+      } catch {}
+      // Cross-navigation guard (same origin, short window) using localStorage
+      try {
+        const lsKey = `visits:guard:ls:${capiBase}`;
+        const lastLS = Number(localStorage.getItem(lsKey) || '0');
+        const nowLS = Date.now();
+        if (nowLS - lastLS < 3000) {
+          return; // skip duplicate within 3s across reloads/tabs
+        }
+        localStorage.setItem(lsKey, String(nowLS));
       } catch {}
       const opts = capiKey ? { headers: { Authorization: `Bearer ${capiKey}` } } : {};
       fetch(`${capiBase}/up`, opts)
