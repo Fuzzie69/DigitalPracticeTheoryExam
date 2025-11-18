@@ -1,24 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Page Not Found</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
-    <meta name="counterapi-base" content="https://crave.theoryexamtestpage.workers.dev/v2/exam-team-1567/first-counter-1567">
-    <meta name="counterapi-key" content="">
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrician Level 4 Theory Practice Exam</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
 <body>
-  <main class="wrap" role="main" aria-labelledby="title">
-    <h1 id="title">You are being redirected to an external link for the practice questions</h1>
-    <p class="sub">You’ll be redirected in <span id="seconds">5</span> seconds.</p>
-    <p class="sub" aria-live="polite">Page visits: <span id="visit-count">—</span></p>
-    <a id="redirect-link" href="https://skillsgrouplms.scgnz.org/enrol/index.php?id=334" rel="canonical" class="btn">Go to homepage now</a>
-    <button id="cancel-redirect" type="button" class="btn" aria-label="Cancel redirect">Stay on this page</button>
-    <noscript><p class="nojs">JavaScript is disabled. Please use the link above.</p></noscript>
-  </main>
-  <script src="script.js" type="module"></script>
+    <div id="app-container">
+        <header>
+            <img src="logo.png" alt="Logo" id="logo">
+            <h1>Electrician Level 4 <strong>Theory</strong> Practice Exam</h1>
+            <div style="font-size: 0.9em; color: #888; margin-top: 4px;">v1.02</div>
+        </header>
+
+        <div id="start-screen" class="screen active">
+            <h2>Welcome</h2>
+            <p>This is a practice exam to help you prepare for a Level 4 Theory exam.</p>
+            <p>You will have <strong>3 hours</strong> to answer <strong>100 questions</strong>.</p>
+            <p>This exam is <strong>Not</strong> open book.</p>
+            <p>Click "Start Exam" to begin.</p>
+            <button id="start-btn" class="btn">Start Exam</button>
+        </div>
+
+        <div id="exam-screen" class="screen">
+            <div id="exam-header">
+                <div id="question-counter"></div>
+                <button id="flag-btn" class="btn flag-btn">⚐ Flag for Review</button>
+            </div>
+            <div id="timer-bar-container">
+                <div id="timer-bar-bg">
+                    <div id="timer-bar"></div>
+                </div>
+                <div id="timer-label"></div>
+            </div>
+            <div id="progress-bar"></div>
+            <div id="question-container">
+                <p id="question-text"></p>
+                <div id="options-container"></div>
+            </div>
+            <div id="navigation-buttons">
+                <div style="display: flex; gap: 10px; margin-top: 40px; justify-content: center;">
+                    <button id="prev-btn" class="btn nav-btn">Previous</button>
+                    <button id="next-btn" class="btn nav-btn">Next</button>
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 40px; justify-content: center;">
+                <button id="submit-btn" class="btn submit-btn">Submit Exam</button>
+                <button id="restart-exam-btn" class="btn" style="background-color:#ffc107;color:#333;">Restart Exam</button>
+            </div>
+        </div>
+
+        <div id="results-screen" class="screen">
+            <h2>Exam Results</h2>
+            <div id="score-summary">
+                <p>Your Score: <span id="score-percentage"></span></p>
+                <p>Correct Answers: <span id="correct-count"></span> out of <span id="total-count"></span></p>
+            </div>
+            <div id="results-details"></div>
+            <button id="restart-btn" class="btn">Try Again</button>
+        </div>
+    </div>
+
+    <div id="flag-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Flagged Questions</h2>
+            <p>You have flagged the following questions for review. Are you sure you want to submit the exam?</p>
+            <ul id="flagged-questions-list"></ul>
+            <div class="modal-buttons">
+                <button id="submit-anyway-btn" class="btn submit-btn">Submit Anyway</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
 </body>
 </html>
