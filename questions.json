@@ -2071,7 +2071,7 @@
     "question": "If a building has three-phase circuits supplying many computers, what is the likely issue with neutral current?",
     "options": [
       "Neutral current is reduced due to load sharing",
-      "Neutral current can exceed phase current due to triplen harmonics",
+      "Neutral current can exceed phase current due to harmonics",
       "Neutral current always equals line current",
       "Neutral conductor is not required"
     ],
