@@ -407,36 +407,25 @@
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q32"
   },
   {
-    "question": "A 230 V oven has three elements: 12 kW (final bake), 8 kW (first bake), 4 kW (pre‑bake). What is the total resistance when the 8 kW and 4 kW elements are in PARALLEL and in series with the 12 kW element?",
-    "options": [
-      "≈8.82 Ω",
-      "≈4.41 Ω",
-      "≈6.61 Ω",
-      "≈13.22 Ω"
-    ],
-    "answer": "≈8.82 Ω",
-    "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q33"
-  },
-  {
     "question": "A 230 V oven has three elements: 12 kW (final bake), 8 kW (first bake), 4 kW (pre‑bake). The 8 kW and 4 kW elements are in PARALLEL which are in series with the 12 kW element. With all elements operating, what is the total current drawn by the 230 V oven?",
     "options": [
-      "≈26.1 A",
+      "≈104.35 A",
       "≈13.0 A",
       "≈52.2 A",
       "≈18.0 A"
     ],
-    "answer": "≈26.1 A",
+    "answer": "≈104.35 A",
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q34"
   },
   {
     "question": "A 230 V oven has three elements: 12 kW (final bake), 8 kW (first bake), 4 kW (pre‑bake). The 8 kW and 4 kW elements are in PARALLEL which are in series with the 12 kW element. With all elements operating, what is the total power dissipated by the 230 V oven?",
     "options": [
-      "≈6.00 kW",
+      "≈24.00 kW",
       "≈2.00 kW",
       "≈12.0 kW",
       "≈4.00 kW"
     ],
-    "answer": "≈6.00 kW",
+    "answer": "≈24.00 kW",
     "reference": "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q35"
   },
   {
