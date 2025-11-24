@@ -2535,7 +2535,7 @@
         "question":  "A 250 kVA Δ–Y 3-phase transformer has primary line voltage 11 kV. What is the PRIMARY LINE current at full load?",
         "options":  [
                         "7.58 A",
-                        "10.02 A",
+                        "22.73 A",
                         "13.12 A",
                         "16.32 A"
                     ],
@@ -2814,7 +2814,7 @@
                         "2400 A",
                         "2785 A",
                         "3200 A",
-                        "4000 A"
+                        "4820 A"
                     ],
         "answer":  "2785 A",
         "reference":  "I_max = 2,000,000 / (1.732 × 415) ≈ 2,785 A"
@@ -3903,8 +3903,8 @@
         "multipartGroupId":  "transformer-500kva-11kv-0.4kv",
         "multipartPart":  1,
         "multipartTotal":  3,
-        "groupTitle":  "500 kVA Transformer (11 kV / 0.4 kV)",
-        "question":  "Part 1: Full-load current on the 11 kV side. Include units (A).",
+        "groupTitle":  "500 kVA Transformer (11 kV / 0.4 kV), Line Voltages, Assume no losses.",
+        "question":  "Part 1: Full-load line current on the 11 kV side. Include units (A).",
         "answer":  "26.24",
         "numeric":  true,
         "tolerance":  0.02,
@@ -3922,8 +3922,8 @@
         "multipartGroupId":  "transformer-500kva-11kv-0.4kv",
         "multipartPart":  2,
         "multipartTotal":  3,
-        "groupTitle":  "500 kVA Transformer (11 kV / 0.4 kV)",
-        "question":  "Part 2: Full-load current on the 400 V side. Include units (A).",
+        "groupTitle":  "500 kVA Transformer (11 kV / 0.4 kV), Line Voltages, Assume no losses.",
+        "question":  "Part 2: Full-load line current on the 400 V side. Include units (A).",
         "answer":  "721.69",
         "numeric":  true,
         "tolerance":  0.02,
@@ -3941,9 +3941,9 @@
         "multipartGroupId":  "transformer-500kva-11kv-0.4kv",
         "multipartPart":  3,
         "multipartTotal":  3,
-        "groupTitle":  "500 kVA Transformer (11 kV / 0.4 kV)",
+        "groupTitle":  "500 kVA Transformer (11 kV / 0.4 kV), Line Voltages, Assume no losses.",
         "question":  "Part 3: What is the short-circuit current at the secondary for %Z = 6%. Include units (A).",
-        "answer":  "12028.17",
+        "answer":  "12028.13",
         "numeric":  true,
         "tolerance":  0.02,
         "unitRequired":  true,
