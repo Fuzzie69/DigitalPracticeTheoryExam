@@ -94,6 +94,16 @@ export function renderQuestion(question, selectedAnswers, qNumber, qTotal) {
 
     const media = toMediaArray(question);
     questionContainer.setAttribute('data-media-count', String(media.length));
+    // Inject multipart label if present
+    questionContainer.querySelectorAll('.part-label').forEach(el => el.remove());
+    if (question && question.multipartGroupId && Number.isInteger(Number(question.multipartPart)) && Number.isInteger(Number(question.multipartTotal))) {
+        const label = document.createElement('div');
+        label.className = 'part-label';
+        const partTxt = `Part ${Number(question.multipartPart)} of ${Number(question.multipartTotal)}`;
+        const title = typeof question.groupTitle === 'string' && question.groupTitle.trim().length > 0 ? ` — ${question.groupTitle}` : '';
+        label.textContent = partTxt + title;
+        questionText.insertAdjacentElement('beforebegin', label);
+    }
     if (media.length > 0) {
         media.forEach((m) => {
             const figure = document.createElement('figure');
@@ -119,33 +129,55 @@ export function renderQuestion(question, selectedAnswers, qNumber, qTotal) {
         });
     }
 
-    // Single-answer selection (radio)
-    const isMulti = false;
-    question.options.forEach(option => {
-        const label = document.createElement('label');
-        label.className = 'option';
+    // Render answer input
+    const isText = question && question.type === 'text';
+    if (isText) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'text-answer-wrapper';
         const input = document.createElement('input');
-        input.type = isMulti ? 'checkbox' : 'radio';
-        input.name = 'question' + qNumber;
-        input.value = option;
-
-        if (selectedAnswers && selectedAnswers.includes(option)) {
-            input.checked = true;
-            label.classList.add('selected');
+        input.type = 'text';
+        input.autocomplete = 'off';
+        if (Array.isArray(question.units) && question.units.length > 0) {
+            input.placeholder = `Include units (e.g., ${question.units[0]})`;
+        } else {
+            input.placeholder = 'Type your answer (include units if required)';
         }
+        const prev = (selectedAnswers && selectedAnswers[0]) ? selectedAnswers[0] : '';
+        input.value = typeof prev === 'string' ? prev : '';
+        input.addEventListener('input', () => {
+            selectAnswer(qNumber - 1, input.value, false);
+        });
+        wrapper.appendChild(input);
+        optionsContainer.appendChild(wrapper);
+    } else {
+        // Single-answer selection (radio)
+        const isMulti = false;
+        question.options.forEach(option => {
+            const label = document.createElement('label');
+            label.className = 'option';
+            const input = document.createElement('input');
+            input.type = isMulti ? 'checkbox' : 'radio';
+            input.name = 'question' + qNumber;
+            input.value = option;
 
-        input.addEventListener('change', () => {
-            optionsContainer.querySelectorAll('.option').forEach(l => l.classList.remove('selected'));
-            if (input.checked) {
+            if (selectedAnswers && selectedAnswers.includes(option)) {
+                input.checked = true;
                 label.classList.add('selected');
             }
-            selectAnswer(qNumber - 1, option, isMulti);
-        });
 
-        label.appendChild(input);
-        label.appendChild(document.createTextNode(option));
-        optionsContainer.appendChild(label);
-    });
+            input.addEventListener('change', () => {
+                optionsContainer.querySelectorAll('.option').forEach(l => l.classList.remove('selected'));
+                if (input.checked) {
+                    label.classList.add('selected');
+                }
+                selectAnswer(qNumber - 1, option, isMulti);
+            });
+
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(option));
+            optionsContainer.appendChild(label);
+        });
+    }
 
     questionCounter.textContent = `Question ${qNumber} of ${qTotal}`;
 }
@@ -219,6 +251,9 @@ export function renderResults(percentage, correct, total, resultsData) {
         } else {
             resultHTML += `<p class="user-answer incorrect-text">Your answer: ${result.userAnswer}</p>`;
             resultHTML += `<p class="correct-answer">Correct answer: ${result.correctAnswer}</p>`;
+            if (result.note) {
+                resultHTML += `<p class="note">Note: ${result.note}</p>`;
+            }
         }
         // Add reference if available
         if (result.reference) {

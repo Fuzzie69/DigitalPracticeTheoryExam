@@ -134,7 +134,31 @@ async function loadQuestions() {
         }
 
         if (plan) {
-            // 1) Best: if we stored IDs and the dataset still has those IDs, use them
+            // 1) Best: if we stored block IDs and the dataset still has those IDs, use them
+            if (plan.blocksIds && Array.isArray(plan.blocksIds)) {
+                const byId = new Map(allQuestions.map(q => [q.id, q]));
+                const rebuiltBlocks = [];
+                for (const blk of plan.blocksIds) {
+                    if (!Array.isArray(blk)) continue;
+                    const rebuilt = blk.map(id => byId.get(id)).filter(Boolean);
+                    if (rebuilt.length === blk.length) rebuiltBlocks.push(rebuilt);
+                }
+                const flat = rebuiltBlocks.flat();
+                if (flat.length > 0) {
+                    questions = flat;
+                    if (plan.optionsShuffles && Array.isArray(plan.optionsShuffles)) {
+                        questions.forEach((q, idx) => {
+                            const shuffle = plan.optionsShuffles[idx];
+                            if (Array.isArray(shuffle) && Array.isArray(q.options)) {
+                                const origOptions = [...q.options];
+                                q.options = shuffle.map(i => origOptions[i]);
+                            }
+                        });
+                    }
+                    return;
+                }
+            }
+            // 2) Next: if we stored IDs and the dataset still has those IDs, use them
             if (Array.isArray(plan.selectedIds) && plan.selectedIds.length === TOTAL_QUESTIONS) {
                 const byId = new Map(allQuestions.map(q => [q.id, q]));
                 const rebuilt = plan.selectedIds.map(id => byId.get(id)).filter(Boolean);
@@ -143,9 +167,10 @@ async function loadQuestions() {
                     // --- Apply optionsShuffles if present ---
                     if (plan.optionsShuffles && Array.isArray(plan.optionsShuffles)) {
                         questions.forEach((q, idx) => {
-                            if (plan.optionsShuffles[idx]) {
+                            const shuffle = plan.optionsShuffles[idx];
+                            if (Array.isArray(shuffle) && Array.isArray(q.options)) {
                                 const origOptions = [...q.options];
-                                q.options = plan.optionsShuffles[idx].map(i => origOptions[i]);
+                                q.options = shuffle.map(i => origOptions[i]);
                             }
                         });
                     }
@@ -165,9 +190,10 @@ async function loadQuestions() {
                 // --- Apply optionsShuffles if present ---
                 if (plan.optionsShuffles && Array.isArray(plan.optionsShuffles)) {
                     questions.forEach((q, idx) => {
-                        if (plan.optionsShuffles[idx]) {
+                        const shuffle = plan.optionsShuffles[idx];
+                        if (Array.isArray(shuffle) && Array.isArray(q.options)) {
                             const origOptions = [...q.options];
-                            q.options = plan.optionsShuffles[idx].map(i => origOptions[i]);
+                            q.options = shuffle.map(i => origOptions[i]);
                         }
                     });
                 }
@@ -182,9 +208,10 @@ async function loadQuestions() {
                 // Restore options shuffles if present
                 if (plan.optionsShuffles && Array.isArray(plan.optionsShuffles)) {
                     questions.forEach((q, idx) => {
-                        if (plan.optionsShuffles[idx]) {
+                        const shuffle = plan.optionsShuffles[idx];
+                        if (Array.isArray(shuffle) && Array.isArray(q.options)) {
                             const origOptions = [...q.options];
-                            q.options = plan.optionsShuffles[idx].map(i => origOptions[i]);
+                            q.options = shuffle.map(i => origOptions[i]);
                         }
                     });
                 }
@@ -256,29 +283,86 @@ export function startExam() {
             const extra = Math.floor(Math.random() * 1000000);
             const seed = now ^ extra;
 
-            // Shuffle an array of indices deterministically
-            const allIdx = Array.from({ length: allQuestions.length }, (_, i) => i);
-            shuffleArray(allIdx, seed);
+            // Build blocks for multipart groups and singles
+            const byGroup = new Map();
+            const singles = [];
+            for (const q of allQuestions) {
+                if (q && q.multipartGroupId) {
+                    const gid = String(q.multipartGroupId);
+                    if (!byGroup.has(gid)) byGroup.set(gid, []);
+                    byGroup.get(gid).push(q);
+                } else {
+                    singles.push([q]);
+                }
+            }
+            const groupBlocks = [];
+            for (const [gid, arr] of byGroup.entries()) {
+                const total = (arr[0] && Number(arr[0].multipartTotal)) || arr.length;
+                const parts = arr.slice().sort((a,b)=> (a.multipartPart||0)-(b.multipartPart||0));
+                const ok = parts.length === total && parts.every((q,i)=> Number(q.multipartPart) === i+1);
+                if (!ok) {
+                    console.warn('Invalid multipart group', gid, '— using as singles.');
+                    parts.forEach(q=> groupBlocks.push([q]));
+                } else {
+                    groupBlocks.push(parts);
+                }
+            }
+            // Shuffle groups and singles separately (deterministic)
+            const groupIdx = Array.from({ length: groupBlocks.length }, (_, i) => i);
+            shuffleArray(groupIdx, seed + 101);
+            const singleIdx = Array.from({ length: singles.length }, (_, i) => i);
+            shuffleArray(singleIdx, seed + 202);
 
-            // Pick exactly TOTAL_QUESTIONS indices
-            const selectedIndices = allIdx.slice(0, TOTAL_QUESTIONS);
+            // Decide number of multipart groups to include: min 1, max 3 (bounded by availability)
+            let pickedGroupBlocks = [];
+            const maxGroups = Math.min(3, groupBlocks.length);
+            if (groupBlocks.length > 0) {
+                const desired = Math.max(1, Math.min(maxGroups, Math.floor(seededRandom(seed + 303) * maxGroups) + 1));
+                let countPicked = 0;
+                let tempCount = 0;
+                for (const gi of groupIdx) {
+                    const bl = groupBlocks[gi];
+                    if (countPicked < desired && tempCount + bl.length <= TOTAL_QUESTIONS) {
+                        pickedGroupBlocks.push(bl);
+                        tempCount += bl.length;
+                        countPicked++;
+                    }
+                    if (countPicked === desired) break;
+                }
+            }
 
-            // Build the questions array in that order
-            questions = selectedIndices.map(i => allQuestions[i]);
+            // Fill remaining questions with singles to hit TOTAL_QUESTIONS
+            const pickedSingleBlocks = [];
+            let count = pickedGroupBlocks.reduce((acc, b) => acc + b.length, 0);
+            for (const si of singleIdx) {
+                const bl = singles[si];
+                if (count + bl.length <= TOTAL_QUESTIONS) {
+                    pickedSingleBlocks.push(bl);
+                    count += bl.length;
+                }
+                if (count === TOTAL_QUESTIONS) break;
+            }
 
-            // Shuffle options for each question, and record the shuffle order
+            // Interleave groups and singles by shuffling the final block order
+            const finalBlocks = pickedGroupBlocks.concat(pickedSingleBlocks);
+            const finalIdx = Array.from({ length: finalBlocks.length }, (_, i) => i);
+            shuffleArray(finalIdx, seed + 404);
+            const pickedBlocks = finalIdx.map(i => finalBlocks[i]);
+            // Flatten to questions
+            questions = pickedBlocks.flat();
+
+            // Shuffle options for MCQ only (skip text and shuffleOptions=false)
             const optionsShuffles = [];
             questions.forEach((q, idx) => {
-                // Save original options order
-                const origOptions = [...q.options];
-                // Create an array of indices to shuffle
-                const optionIndices = origOptions.map((_, i) => i);
-                // Use a deterministic seed per question for reproducibility
-                shuffleArrayInPlace(optionIndices, seed + idx * 1000);
-                // Apply the shuffle to the options
-                q.options = optionIndices.map(i => origOptions[i]);
-                // Store the shuffle order for this question
-                optionsShuffles[idx] = optionIndices;
+                if (Array.isArray(q.options) && q.options.length > 0 && q.shuffleOptions !== false) {
+                    const origOptions = [...q.options];
+                    const optionIndices = origOptions.map((_, i) => i);
+                    shuffleArrayInPlace(optionIndices, seed + idx * 1000);
+                    q.options = optionIndices.map(i => origOptions[i]);
+                    optionsShuffles[idx] = optionIndices;
+                } else {
+                    optionsShuffles[idx] = null;
+                }
             });
 
             // If questions have stable IDs, store them too (more robust if the server reorders the JSON)
@@ -287,12 +371,13 @@ export function startExam() {
                 : null;
 
             // Save only the *plan*, not the bulky questions
+            const blocksIds = pickedBlocks.map(bl => bl.map(q => q.id));
             saveQuestionPlan({
                 seed,
-                selectedIndices,
                 selectedIds,            // may be null if your data has no IDs
                 poolLen: allQuestions.length,
-                optionsShuffles
+                optionsShuffles,
+                blocksIds
             });
 
             // Reset runtime state
@@ -459,23 +544,138 @@ export function submitExam() {
 }
 
 // Helper to compare answers (supports both string and array)
-function answersMatch(userAnswer, correctAnswer) {
+function normalizeString(val, toLower = true) {
+    if (val == null) return '';
+    let s = String(val).trim();
+    return toLower ? s.toLowerCase() : s;
+}
+
+function answersMatch(question, userAnswer, correctAnswer) {
+    // Support array answers (multiple choice)
     if (Array.isArray(correctAnswer)) {
-        // Multiple correct answers
         if (!Array.isArray(userAnswer)) return false;
         if (userAnswer.length !== correctAnswer.length) return false;
-        // Compare arrays order-insensitively
         const a = [...userAnswer].sort();
         const b = [...correctAnswer].sort();
         return a.every((val, idx) => val === b[idx]);
-    } else {
-        // Single correct answer
-        if (Array.isArray(userAnswer)) {
-            // If userAnswer is array, check if it contains only the correct answer
-            return userAnswer.length === 1 && userAnswer[0] === correctAnswer;
-        }
-        return userAnswer === correctAnswer;
     }
+
+    // For single-answer questions, support text input normalization and numeric tolerance
+    const q = question || {};
+    const ua = Array.isArray(userAnswer) ? (userAnswer[0] ?? '') : (userAnswer ?? '');
+    const ca = correctAnswer;
+
+    // Metric-prefix-aware numeric matching (returns early when applicable)
+    if (q && q.numeric) {
+        const tol = typeof q.tolerance === 'number' ? q.tolerance : 0;
+        const requireUnit = !!q.unitRequired || (Array.isArray(q.units) && q.units.length > 0) || typeof q.unit === 'string';
+        const raw = String(ua).trim();
+        let numStr = raw;
+        let unitStr = '';
+        const mNP = raw.match(/^([+-]?(?:\d+(?:\.\d*)?|\.\d+))(?:\s*([\s\S]+))?$/);
+        if (mNP) {
+            numStr = mNP[1];
+            unitStr = (mNP[2] || '').trim();
+        }
+        const parseUnit = (s) => {
+            if (!s) return { base: '', factor: 1 };
+            let u = String(s).trim()
+                .replace(/[μµ]/g, 'u')
+                .replace(/[Ωω]/g, 'ohm')
+                .replace(/\s+/g, '')
+                .toLowerCase();
+            if (u === 'ohms') u = 'ohm';
+            let base = '';
+            let prefix = '';
+            if (u.endsWith('ohm')) { base = 'ohm'; prefix = u.slice(0, -3); }
+            else if (u.endsWith('henries')) { base = 'h'; prefix = u.slice(0, -7); }
+            else if (u.endsWith('henry')) { base = 'h'; prefix = u.slice(0, -5); }
+            else if (u.endsWith('farads')) { base = 'f'; prefix = u.slice(0, -6); }
+            else if (u.endsWith('farad')) { base = 'f'; prefix = u.slice(0, -5); }
+            else {
+                const last = u.slice(-1);
+                if (['a','v','f','h'].includes(last)) { base = last; prefix = u.slice(0, -1); }
+                else if (u === 'ohm') { base = 'ohm'; prefix = ''; }
+            }
+            const prefMap = { '':1, 'k':1e3, 'm':1e-3, 'u':1e-6, 'n':1e-9, 'g':1e9, 't':1e12, 'mega':1e6, 'meg':1e6 };
+            const factor = prefMap[prefix] != null ? prefMap[prefix] : 1;
+            return { base, factor };
+        };
+        if (requireUnit) {
+            if (!unitStr) return false;
+            const acceptedList = Array.isArray(q.units) ? q.units : (q.unit ? [q.unit] : []);
+            const canonPU = parseUnit(acceptedList[0] || '');
+            const acceptedBases = new Set(acceptedList.map(u => parseUnit(u).base));
+            const givenPU = parseUnit(unitStr);
+            if (!acceptedBases.has(givenPU.base)) return false;
+            const uNum = parseFloat(numStr.replace(/,/g, ''));
+            const cNum = parseFloat(String(ca).replace(/,/g, ''));
+            if (!Number.isFinite(uNum) || !Number.isFinite(cNum)) return false;
+            const uInCanon = (uNum * (givenPU.factor || 1)) / ((canonPU.factor || 1));
+            return Math.abs(uInCanon - cNum) <= Math.abs(cNum) * tol;
+        }
+        const uNum = parseFloat(numStr.replace(/,/g, ''));
+        const cNum = parseFloat(String(ca).replace(/,/g, ''));
+        if (!Number.isFinite(uNum) || !Number.isFinite(cNum)) return false;
+        return Math.abs(uNum - cNum) <= Math.abs(cNum) * tol;
+    }
+
+    // Numeric matching with tolerance
+    if (q && q.numeric) {
+        const tol = typeof q.tolerance === 'number' ? q.tolerance : 0;
+        const requireUnit = !!q.unitRequired || (Array.isArray(q.units) && q.units.length > 0);
+
+        // Extract numeric part and unit part
+        const raw = String(ua).trim();
+        let numStr = raw;
+        let unitStr = '';
+        const m = raw.match(/^([+-]?(?:\d+\.?\d*|\.\d+))(?:\s*([\s\S]+))?$/);
+        if (m) {
+            numStr = m[1];
+            unitStr = (m[2] || '').trim();
+        }
+
+        if (requireUnit) {
+            if (!unitStr) return false; // unit required but missing
+            const norm = s => s
+                .toLowerCase()
+                .replace(/[μµ]/g, 'u')
+                .replace(/[Ωω]/g, 'ohm')
+                .replace(/[^a-z0-9]/g, '');
+            const given = norm(unitStr);
+            const accepted = new Set((Array.isArray(q.units) ? q.units : [q.unit]).filter(Boolean).map(norm));
+            // Common synonyms auto-accepted if units not explicitly provided
+            if (accepted.size === 0) {
+                ['a','amp','amps','ampere','amperes','v','volt','volts','ohm','omega','uf','µf','mf','nf','pf','ka','kv'].forEach(u => accepted.add(norm(u)));
+            }
+            // Map common synonyms
+            const mapSyn = s => {
+                if (s === 'ohms') return 'ohm';
+                if (s === 'amp' || s === 'amps' || s === 'ampere' || s === 'amperes') return 'a';
+                if (s === 'volt' || s === 'volts') return 'v';
+                if (s === 'µf') return 'uf';
+                return s;
+            };
+            const normalizedGiven = mapSyn(given);
+            // accept if exact match to any normalized accepted unit
+            const normalizedAccepted = new Set(Array.from(accepted).map(mapSyn));
+            if (!normalizedAccepted.has(normalizedGiven)) return false;
+        }
+
+        const uNum = parseFloat(numStr.replace(/,/g, ''));
+        const cNum = parseFloat(String(ca).replace(/,/g, ''));
+        if (!Number.isFinite(uNum) || !Number.isFinite(cNum)) return false;
+        return Math.abs(uNum - cNum) <= Math.abs(cNum) * tol;
+    }
+
+    // Acceptable string answers set
+    if (q && Array.isArray(q.acceptableAnswers)) {
+        const set = new Set(q.acceptableAnswers.map(a => normalizeString(a)));
+        return set.has(normalizeString(ua));
+    }
+
+    // Fallback exact string (case-insensitive, trimmed)
+    return normalizeString(ua) === normalizeString(ca);
 }
 
 function calculateResults() {
@@ -483,7 +683,21 @@ function calculateResults() {
     const results = questions.map((question, index) => {
         const userAnswer = userAnswers[index];
         const correctAnswer = question.answer;
-        const isCorrect = answersMatch(userAnswer, correctAnswer);
+        const isCorrect = answersMatch(question, userAnswer, correctAnswer);
+        // Determine note for missing units on incorrect numeric answers
+        let note = null;
+        if (!isCorrect && question && question.numeric) {
+            const requireUnit = !!question.unitRequired || (Array.isArray(question.units) && question.units.length > 0) || typeof question.unit === 'string';
+            if (requireUnit) {
+                const ua = Array.isArray(userAnswer) ? (userAnswer && userAnswer[0]) : userAnswer;
+                const raw = (ua == null) ? '' : String(ua);
+                const m = raw.trim().match(/^([+-]?(?:\d+(?:\.\d*)?|\.\d+))(?:\s*([\s\S]+))?$/);
+                const unitStr = m ? (m[2] || '').trim() : '';
+                if (!unitStr) {
+                    note = 'Units missing or not entered.';
+                }
+            }
+        }
         if (isCorrect) {
             correctAnswers++;
         }
@@ -499,12 +713,20 @@ function calculateResults() {
             userAnswer: userAnswerDisplay,
             correctAnswer: correctAnswerDisplay,
             isCorrect,
-            reference: question.reference // Pass reference to UI
+            reference: question.reference, // Pass reference to UI
+            note
         };
     });
 
     const percentage = Math.round((correctAnswers / questions.length) * 100);
     ui.renderResults(percentage, correctAnswers, questions.length, results);
+}
+
+// Export a small test helper for text comparison
+export function __compareAnswerForTest(question, userValue) {
+    const ua = [userValue];
+    const ok = answersMatch(question, ua, question.answer);
+    return { ok };
 }
 
 export function restartExam() {

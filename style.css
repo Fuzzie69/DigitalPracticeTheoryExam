@@ -428,3 +428,9 @@ header h1 {
 .question-media.media-error figcaption {
     color: #a94442;
 }
+/* Multipart label */
+.part-label {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 6px;
+}
