@@ -696,15 +696,15 @@
         "id":  10058
     },
     {
-        "question":  "A 230 V bakery oven has elements 12 kW, 8 kW, and 4 kW. (8 kW and 4 kW in parallel, in series with 12 kW) what is the total current at 230 V?",
+        "question":  "A 230 V bakery oven has elements 6 kW. what is the total current at 230 V?",
         "options":  [
-                        "≈26.1 A",
-                        "≈13.0 A",
-                        "≈52.2 A",
-                        "≈18.0 A"
+                        "≈26.09 A",
+                        "≈13.02 A",
+                        "≈52.23 A",
+                        "≈18.01 A"
                     ],
-        "answer":  "≈26.1 A",
-        "reference":  "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q3(b)",
+        "answer":  "≈26.09 A",
+        "reference":  "General Knowledge",
         "id":  10059
     },
     {
@@ -4097,4 +4097,5 @@
                    ]
     }
 ]
+
 
