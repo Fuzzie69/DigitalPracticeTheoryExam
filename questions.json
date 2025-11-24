@@ -628,7 +628,7 @@
         "options":  [
                         "A device that changes one form of energy to another",
                         "A step‑down transformer",
-                        "A speed‑torque converter",
+                        "A torque multiplier",
                         "A resistor with temperature coefficient"
                     ],
         "answer":  "A device that changes one form of energy to another",
@@ -782,12 +782,12 @@
     {
         "question":  "For an insulation resistance test on a low‑voltage installation, why is a d.c. test voltage (e.g., 500 V d.c.) used?",
         "options":  [
-                        "To avoid capacitive/inductive reactance influencing the result; the constant maximum voltage is more stringent",
+                        "To avoid capacitive/inductive reactance influencing the result; constant maximum voltage.",
                         "Because a.c. testers are unavailable",
                         "To test RCDs simultaneously",
                         "To heat the insulation"
                     ],
-        "answer":  "To avoid capacitive/inductive reactance influencing the result; the constant maximum voltage is more stringent",
+        "answer":  "To avoid capacitive/inductive reactance influencing the result; constant maximum voltage.",
         "reference":  "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q5(b)",
         "id":  10066
     },
@@ -914,12 +914,12 @@
     {
         "question":  "A 250 kVA, Δ‑Y transformer with turns ratio 217:1 is connected to a 50 kV primary. what is the PRIMARY line current at full load?",
         "options":  [
-                        "≈2.87 A",
+                        "≈2.89 A",
                         "≈361.8 A",
                         "≈5.25 A",
                         "≈25 A"
                     ],
-        "answer":  "≈2.87 A",
+        "answer":  "≈2.89 A",
         "reference":  "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q7(a)",
         "id":  10077
     },
@@ -1284,7 +1284,7 @@
         "id":  10107
     },
     {
-        "question":  "Because the new cylinder elements are 6 kW each (up from 1.5 kW), which factors in the existing final subcircuit must be checked?",
+        "question":  "A 1.5 kW HWC has been replaced, because the new cylinder elements are 6 kW each (up from 1.5 kW), which factors in the existing final subcircuit must be checked and possibly replaced?",
         "options":  [
                         "Cable, HRC fuse, isolator and contactor ratings are adequate for the increased load",
                         "MEN link size",
@@ -3262,7 +3262,7 @@
                         "3.20 kW"
                     ],
         "answer":  "5.00 kW",
-        "reference":  "Star (resistive): P_total = V_L^2 / R_phase",
+        "reference":  "Star (resistive): Vph = VL / sqrt3, P_total = 3 x V_ph^2 / R_phase",
         "images":  [
                        {
                            "src":  "assets/img/questions/3phase/starConnectedLoad.png",
