@@ -1404,14 +1404,14 @@
         "id":  10117
     },
     {
-        "question":  "A factory has 9 kW (pf 1), 15 kW (pf 0.6 lag), and a 12 kVA welder at pf 0.7. The kVAr is 28.6 kVAr. what is the overall kVA?",
+        "question":  "A factory has 9 kW (pf 1), 15 kW (pf 0.6 lag), and a 12 kVA welder at pf 0.7. The kVAr is 32.65 kVAr. what is the overall kVA?",
         "options":  [
-                        "≈43.2 kVA",
-                        "≈32.4 kVA",
-                        "≈28.6 kVA",
-                        "≈12.0 kVA"
+                        "≈46 kVA",
+                        "≈32 kVA",
+                        "≈28 kVA",
+                        "≈12 kVA"
                     ],
-        "answer":  "≈43.2 kVA",
+        "answer":  "≈46 kVA",
         "reference":  "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q5(b)",
         "id":  10118
     },
@@ -4097,5 +4097,4 @@
                    ]
     }
 ]
-
 
