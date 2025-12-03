@@ -360,7 +360,7 @@
         "id":  10030
     },
     {
-        "question":  "From Table 27(1) (30°C ambient) and Table 13, what is the minimum copper cable size for that load when unenclosed (touching)?",
+        "question":  "What is the minimum copper cable size for a 16mm² cooper active supply?",
         "options":  [
                         "6 mm²",
                         "2.5 mm²",
@@ -368,7 +368,7 @@
                         "10 mm²"
                     ],
         "answer":  "6 mm²",
-        "reference":  "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q26; Tables pp.18–19",
+        "reference":  "AS/NZS3000 Table 5.1",
         "id":  10031
     },
     {
@@ -380,7 +380,7 @@
                         "≈32.0 kW"
                     ],
         "answer":  "≈27.0 kW",
-        "reference":  "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q27",
+        "reference":  "(400² x 3) / 17.77 = 27011.82 W",
         "id":  10032
     },
     {
@@ -392,7 +392,7 @@
                         "63 A"
                     ],
         "answer":  "40 A",
-        "reference":  "ET – June 2018 (Questions); ET – June 2018 (Marking schedule), Q28",
+        "reference":  "VA / Vline x Square root 3 = 27000 / (400 x 1.732...) = 38.97 A - next closest rating 40 A",
         "id":  10033
     },
     {
@@ -864,26 +864,26 @@
         "id":  10072
     },
     {
-        "question":  "In a lighting circuit with individual 1 A HRC fuses and a 16 A MCB upstream, what happens if a fault occurs in Light B?",
+        "question":  "In a lighting circuit with individual 1 A HRC fuses inside the light and a 16 A Type C MCB upstream, what happens if a fault occurs in the Light?",
         "options":  [
-                        "Only the 1 A fuse for Light B should operate (discrimination)",
+                        "Only the 1 A fuse inside the light should operate",
                         "The 16 A MCB trips only",
                         "All fuses blow",
                         "Nothing will operate"
                     ],
-        "answer":  "Only the 1 A fuse for Light B should operate (discrimination)",
+        "answer":  "Only the 1 A fuse inside the light should operate",
         "reference":  "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q6(b)",
         "id":  10073
     },
     {
         "question":  "Why must a small fuse in a fluorescent light NOT be shorted out or uprated?",
         "options":  [
-                        "The internal wiring/components have a much lower current rating and may not withstand high fault currents",
-                        "It will cause flicker",
-                        "It prevents starting",
-                        "It alters power factor"
+                        "Internal wiring/components may not withstand high fault currents",
+                        "It will cause flicker causing an annoyance",
+                        "It prevents starting in the fittings parts",
+                        "It alters power factor causing the supply wire to be overloaded"
                     ],
-        "answer":  "The internal wiring/components have a much lower current rating and may not withstand high fault currents",
+        "answer":  "Internal wiring/components may not withstand high fault currents",
         "reference":  "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q6(c)",
         "id":  10074
     },
@@ -939,9 +939,9 @@
         "question":  "Why is an open‑circuited current transformer (CT) secondary dangerous?",
         "options":  [
                         "A high voltage can be present at the CT secondary terminals",
-                        "It causes zero flux",
-                        "It trips the MCB",
-                        "It saturates the primary"
+                        "It causes zero flux warping the transformer core",
+                        "It trips the MCB by high load",
+                        "It saturates the primary coil so it cannot collect more flux"
                     ],
         "answer":  "A high voltage can be present at the CT secondary terminals",
         "reference":  "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q7(b)",
@@ -950,24 +950,24 @@
     {
         "question":  "Before insulation testing fixed wiring (fault suspected), what must be done?",
         "options":  [
-                        "Disconnect any permanently connected appliances (and isolate the circuit)",
+                        "Disconnect appliances and isolate the circuit",
                         "Remove the MEN link",
                         "Turn off the RCD only",
                         "Short phase to neutral"
                     ],
-        "answer":  "Disconnect any permanently connected appliances (and isolate the circuit)",
+        "answer":  "Disconnect appliances and isolate the circuit",
         "reference":  "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q8",
         "id":  10080
     },
     {
         "question":  "When testing fixed wiring for insulation faults with an MFT, which function and range are typically selected?",
         "options":  [
-                        "Insulation resistance at 500 V d.c. (or 250 V as appropriate)",
+                        "Insulation resistance at 500 V d.c.",
                         "Continuity at 2 Ω range",
                         "Voltage a.c. 250 V",
-                        "Temperature function"
+                        "Insulation resistance at 500 V a.c."
                     ],
-        "answer":  "Insulation resistance at 500 V d.c. (or 250 V as appropriate)",
+        "answer":  "Insulation resistance at 500 V d.c.",
         "reference":  "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q8",
         "id":  10081
     },
@@ -988,19 +988,19 @@
         "options":  [
                         "10 kW",
                         "11.11 kW",
-                        "8.6 kW",
-                        "15 kW"
+                        "17.32 kW",
+                        "600 kW"
                     ],
         "answer":  "10 kW",
         "reference":  "ET 61 – 17 June 2017 (Questions); ET 61 – 17 June 2017 (Marking schedule), Q9(a)",
         "id":  10083
     },
     {
-        "question":  "A 10 kW, 3‑phase 400 V, 4‑pole induction motor at full‑load speed 1440 rpm, η=90%, pf=0.86. What is the INPUT power of that motor?",
+        "question":  "A 10 kW, 3‑phase 400 V, 4‑pole induction motor at full‑load speed 1440 rpm, η=90%, pf=0.86. What is the INPUT power in kW of that motor?",
         "options":  [
                         "≈11.11 kW",
                         "≈10.0 kW",
-                        "≈12.5 kW",
+                        "≈12.91 kW",
                         "≈8.65 kW"
                     ],
         "answer":  "≈11.11 kW",
@@ -1070,24 +1070,24 @@
     {
         "question":  "If two phases are still live at equipment terminals after isolation at the adjacent isolator, what fault has likely occurred?",
         "options":  [
-                        "The isolating switch contacts failed to open (faulty isolator)",
+                        "The isolating switch contacts failed to open",
                         "The neutral is undersized",
                         "The RCD tripped",
                         "The MEN link is missing"
                     ],
-        "answer":  "The isolating switch contacts failed to open (faulty isolator)",
+        "answer":  "The isolating switch contacts failed to open",
         "reference":  "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q1(b)",
         "id":  10090
     },
     {
         "question":  "A 3‑phase 400 V oven has three 6 kW MIMS elements connected in STAR. What is the PHASE current?",
         "options":  [
-                        "≈26.0 A",
-                        "≈15.0 A",
-                        "≈10.4 A",
-                        "≈8.7 A"
+                        "≈26.09 A",
+                        "≈15.09 A",
+                        "≈10.48 A",
+                        "≈8.76 A"
                     ],
-        "answer":  "≈26.0 A",
+        "answer":  "≈26.09 A",
         "reference":  "ET 60 – 19 Nov 2016 (Questions); ET 60 – 19 Nov 2016 (Marking schedule), Q1(c)",
         "id":  10091
     },
@@ -4097,4 +4097,5 @@
                    ]
     }
 ]
+
 
